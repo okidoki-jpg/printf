@@ -1,7 +1,3 @@
-#include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "main.h"
 
 /**
@@ -70,54 +66,6 @@ int _printf(const char *format, ...)
 
 	va_end(valist);
 	return (outlen);
-}
-
-
-char *str_res(char *src, int src_len)
-{
-	char *str;
-	int i = 0;
-
-	str = malloc(sizeof(char) * src_len);
-	if (!str)
-		return (NULL);
-
-	while (src[i])
-	{
-		str[i] = src[i];
-		i++;
-	}
-
-	return (str);
-}
-
-char *ch_res(char src, int src_len)
-{
-	char *str;
-
-	str = malloc(sizeof(char) * src_len);
-	if (!str)
-		return (NULL);
-
-	*str = src;
-	return (str);
-}
-
-char *int_res(int src, int len)
-{
-	char *str;
-	int tmp;
-
-	str = malloc(sizeof(char) * len);
-	if (!str)
-		return (NULL);
-
-	for (tmp = src; tmp > 0; tmp /= 10)
-	{
-		str[--len] = tmp % 10 + '0';
-	}
-
-	return (str);
 }
 
 int alpha(int ch)

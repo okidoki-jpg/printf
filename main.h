@@ -1,6 +1,10 @@
 #ifndef _main_h_
 #define _main_h_
 
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 int _putchar(int ch);
 char *ch_res(char src, int src_len);
 char *str_res(char *src, int src_len);
