@@ -1,10 +1,16 @@
 #include "main.h"
 
-int alpha(int ch)
+int f_id(int ch)
 {
-	if ((ch > 64 && ch < 91) || (ch > 96 && ch < 123))
-		return (1);
-	return (0);
+	switch (ch)
+	{
+		case 's':
+		case 'c':
+		case 'i':
+		case 'd':
+			return (0);
+	}
+	return (1);
 }
 
 int _strlen(char *str)

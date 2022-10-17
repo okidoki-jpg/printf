@@ -3,8 +3,8 @@
 /**
  * _printf - Entry Point
  * @format: list of arg types
- *	
- *	Return: length of output
+ *
+ * Return: length of output
  */
 
 int _printf(const char *format, ...)
@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	while (format[i])
 	{
 		len = 0;
-		if (format[i] == '%' && alpha(format[i + 1]))
+		if (format[i] == '%' && f_id(format[i + 1]))
 		{
 			switch (format[i + 1])
 			{
