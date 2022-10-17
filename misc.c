@@ -1,6 +1,6 @@
 #include "main.h"
 
-int f_id(int ch)
+int f_id(char ch)
 {
 	switch (ch)
 	{
@@ -8,9 +8,9 @@ int f_id(int ch)
 		case 'c':
 		case 'i':
 		case 'd':
-			return (0);
+			return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int _strlen(char *str)
