@@ -1,11 +1,11 @@
 #include "main.h"
 
-char *str_res(char *src, int src_len)
+char *str_res(char *src)
 {
 	char *str;
-	int i = 0;
+	int i = 0, len = _strlen(src);
 
-	str = malloc(sizeof(char) * src_len);
+	str = malloc(sizeof(char) * len);
 	if (!str)
 		return (NULL);
 
@@ -14,6 +14,7 @@ char *str_res(char *src, int src_len)
 		str[i] = src[i];
 		i++;
 	}
+	str[i] = '\0';
 
 	return (str);
 }

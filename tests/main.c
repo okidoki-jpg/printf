@@ -7,6 +7,6 @@
 int main(void)
 {
     char *str = "Anny";
-    _printf("%s turns %d on % the %ith.\n", str, 63, 24);
+    _printf("%s %c. turns %d on % the %ith.\n", str, 'Q', 63, 24);
     return (0);
 }

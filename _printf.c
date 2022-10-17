@@ -9,8 +9,8 @@
 
 int _printf(const char *format, ...)
 {
-	char *src, *str, *schar, s;
-	int len, i = 0, n, tmp, outlen = 0;
+	char *str;
+	int len, i = 0, n, outlen = 0;
 	va_list valist;
 
 	va_start(valist, format);
@@ -23,42 +23,32 @@ int _printf(const char *format, ...)
 			{
 				case 'd':
 				case 'i':
-					n = va_arg(valist, int);
-					for (tmp = n; tmp > 0; tmp /= 10)
-						len++;
-					schar = int_res(n, len);
-					write(1, schar, len);
-					free(schar);
+					str = int_res(va_arg(valist, int));
+					len = _strlen(str);
+					write(1, str, len);
+					free(str);
+					outlen += len;
 					i++;
 					break;
 				case 'c':
-					s = va_arg(valist, int);
-					schar = ch_res(s, 1);
-					write(1, schar, 1);
-					free(schar);
+					n = va_arg(valist, int);
+					_putchar(n);
+					outlen++;
 					i++;
 					break;
 				case 's':
-					src = va_arg(valist, char *);
-					if (!src)
-						src = "(nil)";
-					while (src[len])
-					{
-						len++;
-					}
-
-					str = str_res(src, len);
+					str = str_res(va_arg(valist, char *));
+					len = _strlen(str);
 					write(1, str, len);
 					free(str);
+					outlen += len;
 					i++;
 			}
-			outlen += len;
 		}
 		else
 		{
-			schar = ch_res(format[i], 1);
-			write(1, schar, 1);
-			free(schar);
+			n = format[i];
+			_putchar(n);
 			outlen++;
 		}
 		i++;
@@ -68,9 +58,3 @@ int _printf(const char *format, ...)
 	return (outlen);
 }
 
-int alpha(int ch)
-{
-	if ((ch > 64 && ch < 91) || (ch > 96 && ch < 123))
-		return (1);
-	return (0);
-}
