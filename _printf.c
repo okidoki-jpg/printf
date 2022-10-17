@@ -5,20 +5,16 @@
 #include "main.h"
 
 /**
- *  * print_all - Entry Point
- *   * c = char, i = int, f = float, s = char * (if null print (nil))
- *	* @format: list of arg types
- *	 * Return: 0
+ * _printf - Entry Point
+ * @format: list of arg types
+ *	
+ *	Return: length of output
  */
-char *ch_res(char src, int src_len);
-char *str_res(char *src, int src_len);
-char *int_res(int src, int len);
-int alpha(int ch);
 
-void _printf(const char *format, ...)
+int _printf(const char *format, ...)
 {
 	char *src, *str, *schar, s;
-	int len, i = 0, n, tmp;
+	int len, i = 0, n, tmp, outlen = 0;
 	va_list valist;
 
 	va_start(valist, format);
@@ -27,7 +23,7 @@ void _printf(const char *format, ...)
 		len = 0;
 		if (format[i] == '%' && alpha(format[i + 1]))
 		{
-		   switch (format[i + 1])
+			switch (format[i + 1])
 			{
 				case 'd':
 				case 'i':
@@ -46,14 +42,13 @@ void _printf(const char *format, ...)
 					free(schar);
 					i++;
 					break;
-
 				case 's':
 					src = va_arg(valist, char *);
 					if (!src)
-					   src = "(nil)";
+						src = "(nil)";
 					while (src[len])
 					{
-					  len++;
+						len++;
 					}
 
 					str = str_res(src, len);
@@ -61,6 +56,7 @@ void _printf(const char *format, ...)
 					free(str);
 					i++;
 			}
+			outlen += len;
 		}
 		else
 		{
@@ -102,7 +98,6 @@ char *ch_res(char src, int src_len)
 		return (NULL);
 
 	*str = src;
-
 	return (str);
 }
 
@@ -110,16 +105,16 @@ char *int_res(int src, int len)
 {
 	char *str;
 	int tmp;
-	
+
 	str = malloc(sizeof(char) * len);
 	if (!str)
 		return (NULL);
-	
+
 	for (tmp = src; tmp > 0; tmp /= 10)
 	{
 		str[--len] = tmp % 10 + '0';
 	}
-	
+
 	return (str);
 }
 
@@ -129,5 +124,3 @@ int alpha(int ch)
 		return (1);
 	return (0);
 }
-
-
