@@ -7,6 +7,6 @@
 int main(void)
 {
     char *str = "Anny";
-    _printf("%s %c. turns %d in %i days.\n", str, 'Q', 63, -3);
+    _printf("%s %c. turns %d %% in %i days.\n", str, 'Q', 63, -3);
     return (0);
 }

@@ -2,13 +2,13 @@
 
 int f_id(char ch)
 {
-	switch (ch)
+	char *c = "scid%";
+
+	while (*c)
 	{
-		case 's':
-		case 'c':
-		case 'i':
-		case 'd':
+		if (*c == ch)
 			return (1);
+		c++;
 	}
 	return (0);
 }

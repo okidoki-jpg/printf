@@ -17,33 +17,44 @@ int _printf(const char *format, ...)
 	while (format[i])
 	{
 		len = 0;
-		if (format[i] == '%' && f_id(format[i + 1]))
+		if (format[i] == '%')
 		{
-			switch (format[i + 1])
+			if (f_id(format[i + 1]))
 			{
-				case 'd':
-				case 'i':
-					str = int_res(va_arg(valist, int));
-					len = _strlen(str);
-					write(1, str, len);
-					free(str);
-					outlen += len;
-					i++;
-					break;
-				case 'c':
-					n = va_arg(valist, int);
-					_putchar(n);
-					outlen++;
-					i++;
-					break;
-				case 's':
-					str = str_res(va_arg(valist, char *));
-					len = _strlen(str);
-					write(1, str, len);
-					free(str);
-					outlen += len;
-					i++;
+				switch (format[i + 1])
+				{
+					case 'd':
+					case 'i':
+						str = int_res(va_arg(valist, int));
+						len = _strlen(str);
+						write(1, str, len);
+						free(str);
+						outlen += len;
+						i++;
+						break;
+					case 'c':
+						n = va_arg(valist, int);
+						_putchar(n);
+						outlen++;
+						i++;
+						break;
+					case '%':
+						n = format[i];
+						_putchar(n);
+						outlen++;
+						i++;
+						break;
+					case 's':
+						str = str_res(va_arg(valist, char *));
+						len = _strlen(str);
+						write(1, str, len);
+						free(str);
+						outlen += len;
+						i++;
+				}
 			}
+			else
+				i++;
 		}
 		else
 		{
