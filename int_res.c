@@ -3,7 +3,13 @@
 char *int_res(int src)
 {
 	char *str;
-	int tmp, len = 0;
+	int tmp, n = src, len = 0;
+
+	if (src < 0)
+	{
+		src *= -1;
+		len++;
+	}
 
 	for (tmp = src; tmp > 0; tmp /= 10)
 		len++;
@@ -17,5 +23,10 @@ char *int_res(int src)
 	{
 		str[--len] = tmp % 10 + '0';
 	}
+	if (n < 0)
+		str[--len] = '-';
+	if (src == 0)
+		str[--len] = '0';
+
 	return (str);
 }
