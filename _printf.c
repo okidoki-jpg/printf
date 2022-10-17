@@ -63,11 +63,13 @@ int _printf(const char *format, ...)
 			schar = ch_res(format[i], 1);
 			write(1, schar, 1);
 			free(schar);
+			outlen++;
 		}
 		i++;
 	}
 
 	va_end(valist);
+	return (outlen);
 }
 
 
