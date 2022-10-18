@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * _printf - Entry Point
- * @format: list of arg types
+ * _printf - Print given string by relevant type
+ * @format: formated string with format specifier placeholders
+ * @...: variable arguments
  *
- * Return: length of output
+ * Return: number of characters printed
  */
 
 int _printf(const char *format, ...)
@@ -23,16 +24,16 @@ int _printf(const char *format, ...)
 				{
 					case 'd':
 					case 'i':
-						len += int_res(va_arg(args, int));
+						len += i_printf(va_arg(args, int));
 						break;
 					case 'c':
-						len += ch_res(va_arg(args, int));
+						len += c_printf(va_arg(args, int));
 						break;
 					case '%':
 						len += _putchar(format[i]);
 						break;
 					case 's':
-						len += str_res(va_arg(args, char *));
+						len += s_printf(va_arg(args, char *));
 				}
 				i++;
 			}
