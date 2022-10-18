@@ -36,6 +36,10 @@ int _printf(const char *format, ...)
 						break;
 					case 's':
 						len += s_printf(va_arg(args, char *));
+						break;
+					case 'b':
+						len += b_printf(va_arg(args, unsigned int));
+
 				}
 				i++;
 			}

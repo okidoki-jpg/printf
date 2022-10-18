@@ -9,7 +9,7 @@
 
 int f_id(char ch)
 {
-	char *c = "scid%";
+	char *c = "bscid%";
 
 	while (*c)
 	{
