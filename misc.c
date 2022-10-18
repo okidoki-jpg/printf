@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * f_id - check format specifier type
+ * @ch: character to evaluate
+ *
+ * Return: 1 if found, else 0
+ */
+
 int f_id(char ch)
 {
 	char *c = "scid%";
@@ -12,6 +19,13 @@ int f_id(char ch)
 	}
 	return (0);
 }
+
+/**
+ * _strlen - get string length
+ * @str: string to evaluate
+ *
+ * Return: length of string
+ */
 
 int _strlen(char *str)
 {

@@ -1,6 +1,13 @@
 #include "main.h"
 
-int int_res(int src)
+/**
+ * i_printf - print ints from va_arg for _printf.c
+ * @src: int to print
+ *
+ * Return: number of characters printed
+ */
+
+int i_printf(int src)
 {
 	int tmp, len = 0;
 	char n;
