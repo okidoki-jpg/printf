@@ -10,6 +10,7 @@ int c_printf(char src);
 int s_printf(char *src);
 int i_printf(int src);
 int b_printf(_ui src);
+int u_printf(_ui src);
 int _putchar(char ch);
 int _printf(const char *format, ...);
 int _strlen(char *str);

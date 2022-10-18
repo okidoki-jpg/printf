@@ -4,7 +4,7 @@
  * b_printf - convert unsigned int to binary
  * @src: number to convert
  * 
- * Return: converted number
+ * Return: number of values printed
  */
 
 int b_printf(_ui src)
@@ -12,7 +12,8 @@ int b_printf(_ui src)
 	_ui quo, rem;
 	int len = 0;
 	char n;
-
+	if (!src)
+		return (-1);
 	if (src > 0)
 	{
 		quo = src / 2;
