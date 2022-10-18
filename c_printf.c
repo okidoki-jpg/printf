@@ -7,7 +7,7 @@
  * Return: number of chars printed
  */
 
-int c_printf(int src)
+int c_printf(char src)
 {
 	int len = sizeof(char);
 

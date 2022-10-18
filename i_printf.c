@@ -26,7 +26,7 @@ int i_printf(int src)
 
 	for (tmp = src; tmp > 0;)
 	{
-		int_res(tmp / 10);
+		i_printf(tmp / 10);
 		n = tmp % 10 + '0';
 		break;
 	}
