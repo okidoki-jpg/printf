@@ -9,14 +9,12 @@
 
 int _printf(const char *format, ...)
 {
-	char *str;
-	int len, i = 0, n, outlen = 0;
-	va_list valist;
+	int len = 0, i = 0;
+	va_list args;
 
-	va_start(valist, format);
+	va_start(args, format);
 	while (format[i])
 	{
-		len = 0;
 		if (format[i] == '%')
 		{
 			if (f_id(format[i + 1]))
@@ -25,47 +23,29 @@ int _printf(const char *format, ...)
 				{
 					case 'd':
 					case 'i':
-						str = int_res(va_arg(valist, int));
-						len = _strlen(str);
-						write(1, str, len);
-						free(str);
-						outlen += len;
-						i++;
+						len += int_res(va_arg(args, int));
 						break;
 					case 'c':
-						n = va_arg(valist, int);
-						_putchar(n);
-						outlen++;
-						i++;
+						len += ch_res(va_arg(args, int));
 						break;
 					case '%':
-						n = format[i];
-						_putchar(n);
-						outlen++;
-						i++;
+						len += _putchar(format[i]);
 						break;
 					case 's':
-						str = str_res(va_arg(valist, char *));
-						len = _strlen(str);
-						write(1, str, len);
-						free(str);
-						outlen += len;
-						i++;
+						len += str_res(va_arg(args, char *));
 				}
+				i++;
 			}
 			else
 				i++;
 		}
 		else
 		{
-			n = format[i];
-			_putchar(n);
-			outlen++;
+			len += _putchar(format[i]);
 		}
 		i++;
 	}
 
-	va_end(valist);
-	return (outlen);
+	va_end(args);
+	return (len);
 }
-

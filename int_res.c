@@ -1,32 +1,28 @@
 #include "main.h"
 
-char *int_res(int src)
+int int_res(int src)
 {
-	char *str;
-	int tmp, n = src, len = 0;
+	int tmp, len = 0;
+	char n;
 
 	if (src < 0)
 	{
 		src *= -1;
-		len++;
+		write(1, "-", 1);
 	}
 
 	for (tmp = src; tmp > 0; tmp /= 10)
 		len++;
 
-	str = malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (NULL);
-	
-	str[len] = '\0';
-	for (tmp = src; tmp > 0; tmp /= 10)
+	if (len == 0)
+		return (len);
+
+	for (tmp = src; tmp > 0;)
 	{
-		str[--len] = tmp % 10 + '0';
+		int_res(tmp / 10);
+		n = tmp % 10 + '0';
+		break;
 	}
-	if (n < 0)
-		str[--len] = '-';
-	if (src == 0)
-		str[--len] = '0';
-
-	return (str);
+	write(1, &n, 1);
+	return (len);
 }
