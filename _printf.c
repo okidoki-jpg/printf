@@ -52,6 +52,9 @@ int _printf(const char *format, ...)
 					case 'X':
 						len += X_printf(va_arg(args, _ui));
 						break;
+					case 'R':
+						len += rot_printf(va_arg(args, char *));
+						break;
 
 				}
 				i++;

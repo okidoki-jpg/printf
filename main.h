@@ -14,6 +14,7 @@ int u_printf(_ui src);
 int o_printf(_ui src);
 int x_printf(_ui src);
 int X_printf(_ui src);
+int rot_printf(char *src);
 int dp(_ui src);
 int _putchar(char ch);
 int _printf(const char *format, ...);
