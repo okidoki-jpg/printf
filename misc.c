@@ -16,6 +16,7 @@ int f_id(char ch)
 int _strlen(char *str)
 {
 	int i = 0;
+
 	while (str[i])
 	{
 		i++;
