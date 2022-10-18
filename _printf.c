@@ -39,8 +39,19 @@ int _printf(const char *format, ...)
 						break;
 					case 'b':
 						len += b_printf(va_arg(args, _ui));
+						break;
 					case 'u':
 						len += u_printf(va_arg(args, _ui));
+						break;
+					case 'o':
+						len += o_printf(va_arg(args, _ui));
+						break;
+					case 'x':
+						len += x_printf(va_arg(args, _ui));
+						break;
+					case 'X':
+						len += X_printf(va_arg(args, _ui));
+						break;
 
 				}
 				i++;

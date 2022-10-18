@@ -12,6 +12,7 @@ int b_printf(_ui src)
 	_ui quo, rem;
 	int len = 0;
 	char n;
+
 	if (!src)
 		return (-1);
 	if (src > 0)

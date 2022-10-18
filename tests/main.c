@@ -25,6 +25,10 @@ int main(void)
     printf("Len:[%d]\n", len2);
 	_printf("Unsigned:[%u]\n", ui);
     printf("Unsigned:[%u]\n", ui);
+	_printf("Unsigned octal:[%o]\n", ui);
+    printf("Unsigned octal:[%o]\n", ui);
+	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
 	_printf("%b\n", 98);
     return (0);
 }
