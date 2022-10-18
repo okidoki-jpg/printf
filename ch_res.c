@@ -1,6 +1,8 @@
 #include "main.h"
 
-int ch_res(char src)
+int ch_res(int src)
 {
-	return(_putchar(src));
+	int len = sizeof(char);
+	write(1, &src, len);
+	return (len);
 }
