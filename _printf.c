@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 		{"c", c_printf},
 		{"s", s_printf}};
 
-	if (!format || (*format == '%' && *(format + 1) == NULL))
+	if (!format || (*format == '%' && *(format + 1) == '\0'))
 		return (-1);
 	va_start(args, format);
 
