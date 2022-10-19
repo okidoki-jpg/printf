@@ -13,8 +13,10 @@ int _printf(const char *format, ...)
 	int len = 0, i;
 	va_list args;
 	t_c func[] = {
-		{"c", c_printf},
-		{"s", s_printf}};
+		{"d", i_printf}, {"i", i_printf}, {"c", c_printf},
+		{"s", s_printf}, {"b", b_printf}, {"u", u_printf},
+		{"o", o_printf}, {"x", x_printf}, {"X", X_printf},
+		{"R", rot_printf}, {"%", m_printf}};
 
 	if (!format || (*format == '%' && !*(format + 1)))
 		return (-1);
