@@ -14,8 +14,6 @@ int o_printf(va_list *args)
 	char *buf;
 
 	src = va_arg(*args, _ui);
-	if (!src)
-		return (-1);
 
 	for (quo = src; quo > 0; quo /= 8)
 		len++;
