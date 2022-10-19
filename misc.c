@@ -13,8 +13,9 @@ int f_id(char ch)
 
 	while (*c)
 	{
-		if (*c++ == ch)
+		if (*c == ch)
 			return (1);
+		c++;
 	}
 	return (0);
 }
