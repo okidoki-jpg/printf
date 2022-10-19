@@ -22,19 +22,28 @@ int _printf(const char *format, ...)
 
 	while (*format)
 	{
-		if (*format == '%' && f_id(*(format + 1)))
+		if (*format == '%')
 		{
-			i = 0;
-			while (*func[i].type)
+			if (f_id(*(format + 1)))
 			{
-				if (*(format + 1) == *func[i].type)
+				i = 0;
+				while (*func[i].type)
 				{
-					len += func[i].f(&args);
-					format++;
-					break;
+					if (*(format + 1) == *func[i].type)
+					{
+						len += func[i].f(&args);
+						format++;
+						break;
+					}
+					i++;
 				}
-				i++;
 			}
+			else if (*(format + 1) == '\0')
+				return (-1);
+			else if (*(format + 1) == ' ')
+				format++;
+			else
+				len += _putchar(*format);
 		}
 		else
 			len += _putchar(*format);

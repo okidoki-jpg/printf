@@ -2,7 +2,7 @@
 
 /**
  * i_printf - print ints from va_arg for _printf.c
- * @arg: va_list with int to print
+ * @args: va_list with int to print
  *
  * Return: number of characters printed
  */
