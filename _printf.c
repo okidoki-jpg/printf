@@ -10,63 +10,39 @@
 
 int _printf(const char *format, ...)
 {
-	int len = 0, i = 0;
+	int len = 0, i;
 	va_list args;
+	t_c func[] = {
+		{"d", i_printf}, {"i", i_printf}, {"c", c_printf},
+		{"s", s_printf}, {"b", i_printf}, {"u", u_printf},
+		{"o", o_printf}, {"x", x_printf}, {"X", X_printf},
+		{"R", rot_printf}, {"%", m_printf}};
 
 	if (!format || (*format == '%' && !*(format + 1)))
 		return (-1);
 	va_start(args, format);
-	while (format[i])
-	{
-		if (format[i] == '%')
-		{
-			if (f_id(format[i + 1]))
-			{
-				switch (format[i + 1])
-				{
-					case 'd':
-					case 'i':
-						len += i_printf(va_arg(args, int));
-						break;
-					case 'c':
-						len += c_printf(va_arg(args, int));
-						break;
-					case '%':
-						len += _putchar(format[i]);
-						break;
-					case 's':
-						len += s_printf(va_arg(args, char *));
-						break;
-					case 'b':
-						len += b_printf(va_arg(args, _ui));
-						break;
-					case 'u':
-						len += u_printf(va_arg(args, _ui));
-						break;
-					case 'o':
-						len += o_printf(va_arg(args, _ui));
-						break;
-					case 'x':
-						len += x_printf(va_arg(args, _ui));
-						break;
-					case 'X':
-						len += X_printf(va_arg(args, _ui));
-						break;
-					case 'R':
-						len += rot_printf(va_arg(args, char *));
-						break;
 
+	while (*format)
+	{
+		if (*format == '%' && f_id(*(format + 1)))
+		{
+			i = 0;
+			while (*func[i].type)
+			{
+				if (*(format + 1) == *func[i].type)
+				{
+					len += func[i].f(&args);
+					format++;
+					break;
 				}
 				i++;
 			}
-			else
-				i++;
 		}
 		else
 		{
-			len += _putchar(format[i]);
+			len += _putchar(*format);
 		}
-		i++;
+		format++;
 	}
 
 	va_end(args);

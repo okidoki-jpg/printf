@@ -2,34 +2,34 @@
 
 /**
  * u_printf - print unsigned ints from va_arg for _printf.c
- * @src: int to print
+ * @args: va_list with int to print
  *
  * Return: number of characters printed
  */
 
-int u_printf(_ui src)
+int u_printf(va_list *args)
 {
-	_ui tmp, len = 0;
-	char n;
+	_ui quo, rem, src;
+	int idx = 0, len = 0;
+	char *buf;
 
-	if (src < 0)
-	{
-		src *= -1;
-		write(1, "-", 1);
-	}
+	src = va_arg(*args, _ui);
 
-	for (tmp = src; tmp > 0; tmp /= 10)
+	for (quo = src; quo > 0; quo /= 10)
 		len++;
 
-	if (len == 0)
-		return (len);
+	buf = malloc(sizeof(char) * len + 1);
+	if (!buf)
+		return (-1);
 
-	for (tmp = src; tmp > 0;)
+	buf[len] = '\0';
+	idx = len;
+	for (quo = src; quo > 0; quo /= 10)
 	{
-		u_printf(tmp / 10);
-		n = tmp % 10 + '0';
-		break;
+		rem = quo % 10;
+		buf[--idx] = rem + '0';
 	}
-	write(1, &n, 1);
+	write(1, buf, len);
+	free(buf);
 	return (len);
 }

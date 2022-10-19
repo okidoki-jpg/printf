@@ -2,34 +2,42 @@
 
 /**
  * i_printf - print ints from va_arg for _printf.c
- * @src: int to print
+ * @argd: va_list with int to print
  *
  * Return: number of characters printed
  */
 
-int i_printf(int src)
+int i_printf(va_list *args)
 {
-	int tmp, len = 0;
-	char n;
+	int idx, quo, rem, src, len = 0, neg = 0;
+	char *buf;
+
+	src = va_arg(*args, int);
 
 	if (src < 0)
 	{
 		src *= -1;
-		write(1, "-", 1);
+		len++;
+		neg++;
 	}
 
-	for (tmp = src; tmp > 0; tmp /= 10)
+	for (quo = src; quo > 0; quo /= 10)
 		len++;
 
-	if (len == 0)
-		return (len);
+	buf = malloc(sizeof(char) * len + 1);
+	if (!buf)
+		return (-1);
 
-	for (tmp = src; tmp > 0;)
+	idx = len;
+	buf[len] = '\0';
+	for (quo = src; quo > 0; quo /= 10)
 	{
-		i_printf(tmp / 10);
-		n = tmp % 10 + '0';
-		break;
+		rem = quo % 10;
+		buf[--idx] = rem + '0';
 	}
-	write(1, &n, 1);
+	if (neg)
+        buf[--idx] = '-';
+	write(1, buf, len);
+	free(buf);
 	return (len);
 }

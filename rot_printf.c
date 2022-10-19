@@ -1,9 +1,9 @@
 #include "main.h"
 
-int rot_printf(char *src)
+int rot_printf(va_list *args)
 {
-	int len = 0;
-	char ch;
+	char ch, *src = va_arg(*args, char *);
+	int len = _strlen(src);
 
 	while (*src)
 	{
@@ -21,7 +21,6 @@ int rot_printf(char *src)
 			ch = *src;
 		write(1, &ch, 1);
 		src++;
-		len++;
 	}
 	return (len);
 }

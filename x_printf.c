@@ -2,34 +2,42 @@
 
 /**
  * x_printf - print lowercase hex vals from va_arg for _printf.c
- * @src: int to convert
+ * @args: va_list with int to convert
  *
  * Return: number of characters printed
  */
 
-int x_printf(_ui src)
+int x_printf(va_list *args)
 {
-    _ui tmp, rem, quo, len = 0;
-    char n, i = '0';
+    _ui rem, quo, src, len = 0, idx = 0;
+    char *buf, i;
 
+	src = va_arg(*args, _ui);
     if (src < 0)
-    {
+	{
         src *= -1;
-        write(1, "-", 1);
+	}
+
+	for (quo = src; quo > 0; quo /= 16)
+		len++;
+
+	buf = malloc(sizeof(char) * len + 1);
+	if (!buf)
+		return (-1);
+
+	buf[len] = '\0';
+	idx = len;
+	for (quo = src; quo != 0;)
+    {
+		i = '0';
+        rem = quo % 16;
+        if (rem > 9)
+            i = '7' + 32;
+        buf[--idx] = (i + rem);
+		quo /= 16;
     }
 
-    for (tmp = src; tmp > 0;)
-    {
-		len++;
-		rem = tmp % 16;
-		quo = tmp / 16;
-		if (rem > 9)
-			i = '7' + 32;
-		n = i + rem;
-		if (quo > 0)
-        	x_printf(quo);
-        break;
-    }
-    write(1, &n, 1);
+    write(1, buf, len);
+	free(buf);
     return (len);
 }
