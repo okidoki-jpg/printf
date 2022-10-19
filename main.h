@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-//typedef unsigned int _ui;
+/*typedef unsigned int _ui;*/
 typedef struct type_convert
 {
 	char *type;
