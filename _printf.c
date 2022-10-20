@@ -32,7 +32,6 @@ int _printf(const char *format, ...)
 					if (*(format + 1) == *func[i].type)
 					{
 						len += func[i].f(&args);
-						format++;
 						break;
 					}
 					i++;
@@ -40,8 +39,7 @@ int _printf(const char *format, ...)
 			}
 			else if (*(format + 1) == '\0')
 				return (-1);
-			else if (*(format + 1) == ' ')
-				format++;
+			format++;
 		}
 		else
 			len += _putchar(*format);

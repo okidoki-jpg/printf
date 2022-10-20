@@ -9,23 +9,24 @@
 
 int b_printf(va_list *args)
 {
-	_ui quo, rem, src;
+	unsigned int quo, rem, src;
 	int idx, len = 0;
 	char *buf;
 
-	src = va_arg(*args, _ui);
-	if (!src)
-		return (-1);
+	src = va_arg(*args, unsigned int);
 
 	for (quo = src; quo > 0; quo /= 2)
 		len++;
 
-	buf = malloc(sizeof(char) * len + 1);
+	if (!len)
+		return (-1);
+
+	buf = malloc(sizeof(char) * len );
 	if (!buf)
 		return (-1);
 
 	idx = len;
-	buf[idx] = '\0';
+	
 	for (quo = src; quo > 0; quo /= 2)
 	{
 		rem = quo % 2;
