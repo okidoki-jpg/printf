@@ -32,7 +32,7 @@ int main(void)
     printf("Unsigned octal:[%o]\n", ui);
 	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    _printf("Rot13: %R\n", str);
-	_printf("%b\n", 98);*/
+    _printf("Rot13: %R\n", str);*/
+	_printf("%b\n", 98);
     return (0);
 }
