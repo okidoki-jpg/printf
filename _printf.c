@@ -13,8 +13,11 @@ int _printf(const char *format, ...)
 	int len = 0, i;
 	va_list args;
 	t_c func[] = {
-		{"c", c_printf}, {"s", s_printf}, {"i", i_printf},
-		{"d", i_printf}, {"b", b_printf}};
+		{"c", c_printf}, {"s", s_printf}, {"%", m_printf},
+		{"i", i_printf}, {"d", i_printf}, {"b", b_printf},
+		{"u", u_printf}, {"o", o_printf}, {"x", x_printf},
+		{"X", X_printf}
+	};
 
 	if (!format || (*format == '%' && *(format + 1) == '\0'))
 		return (-1);
@@ -32,6 +35,7 @@ int _printf(const char *format, ...)
 					if (*(format + 1) == *func[i].type)
 					{
 						len += func[i].f(&args);
+						format++;
 						break;
 					}
 					i++;
@@ -39,7 +43,6 @@ int _printf(const char *format, ...)
 			}
 			else if (*(format + 1) == '\0')
 				return (-1);
-			format++;
 		}
 		else
 			len += _putchar(*format);
