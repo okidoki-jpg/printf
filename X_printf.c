@@ -9,16 +9,11 @@
 
 int X_printf(va_list *args)
 {
-    unsigned int rem, quo, src;
+	unsigned int rem, quo, src;
 	int len = 0, idx = 0;
-    char *buf, i;
+	char *buf, i;
 
 	src = va_arg(*args, unsigned int);
-    if (src < 0)
-	{
-        src *= -1;
-	}
-
 	for (quo = src; quo > 0; quo /= 16)
 		len++;
 
@@ -32,16 +27,16 @@ int X_printf(va_list *args)
 	buf[len] = '\0';
 	idx = len;
 	for (quo = src; quo != 0;)
-    {
+	{
 		i = '0';
-        rem = quo % 16;
-        if (rem > 9)
-            i = '7';
-        buf[--idx] = (i + rem);
+		rem = quo % 16;
+		if (rem > 9)
+			i = '7';
+		buf[--idx] = (i + rem);
 		quo /= 16;
-    }
+	}
 
-    write(1, buf, len);
+	write(1, buf, len);
 	free(buf);
-    return (len);
+	return (len);
 }

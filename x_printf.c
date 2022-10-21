@@ -27,16 +27,16 @@ int x_printf(va_list *args)
 	buf[len] = '\0';
 	idx = len;
 	for (quo = src; quo != 0;)
-    {
+	{
 		i = '0';
         rem = quo % 16;
-        if (rem > 9)
-            i = '7' + 32;
-        buf[--idx] = (i + rem);
+		if (rem > 9)
+			i = '7' + 32;
+		buf[--idx] = (i + rem);
 		quo /= 16;
-    }
+	}
 
-    write(1, buf, len);
+	write(1, buf, len);
 	free(buf);
-    return (len);
+	return (len);
 }
