@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * x_printf - print uppercase hex vals from va_arg for _printf.c
+ * X_printf - print uppercase hex vals from va_arg for _printf.c
  * @args: va_list with int to convert
  *
  * Return: number of characters printed

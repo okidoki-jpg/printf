@@ -29,7 +29,7 @@ int x_printf(va_list *args)
 	for (quo = src; quo != 0;)
 	{
 		i = '0';
-        rem = quo % 16;
+		rem = quo % 16;
 		if (rem > 9)
 			i = '7' + 32;
 		buf[--idx] = (i + rem);
