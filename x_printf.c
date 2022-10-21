@@ -21,6 +21,9 @@ int x_printf(va_list *args)
 	for (quo = src; quo > 0; quo /= 16)
 		len++;
 
+	if (!len)
+		return (-1);
+
 	buf = malloc(sizeof(char) * len + 1);
 	if (!buf)
 		return (-1);
