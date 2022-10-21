@@ -9,16 +9,11 @@
 
 int x_printf(va_list *args)
 {
-    unsigned int rem, quo, src;
+	unsigned int rem, quo, src;
 	int len = 0, idx = 0;
-    char *buf, i;
+	char *buf, i;
 
 	src = va_arg(*args, unsigned int);
-    if (src < 0)
-	{
-        src *= -1;
-	}
-
 	for (quo = src; quo > 0; quo /= 16)
 		len++;
 

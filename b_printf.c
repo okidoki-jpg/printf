@@ -3,7 +3,7 @@
 /**
  * b_printf - convert unsigned int to binary
  * @args: va_list with number to convert
- * 
+ *
  * Return: number of values printed
  */
 
@@ -21,12 +21,12 @@ int b_printf(va_list *args)
 	if (!len)
 		return (-1);
 
-	buf = malloc(sizeof(char) * len );
+	buf = malloc(sizeof(char) * len);
 	if (!buf)
 		return (-1);
 
 	idx = len;
-	
+
 	for (quo = src; quo > 0; quo /= 2)
 	{
 		rem = quo % 2;
@@ -35,5 +35,4 @@ int b_printf(va_list *args)
 	write(1, buf, len);
 	free(buf);
 	return (len);
-	
 }

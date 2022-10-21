@@ -39,7 +39,7 @@ int i_printf(va_list *args)
 		buf[--idx] = rem + '0';
 	}
 	if (neg)
-        buf[--idx] = '-';
+		buf[--idx] = '-';
 	write(1, buf, len);
 	free(buf);
 	return (len);
