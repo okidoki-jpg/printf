@@ -16,7 +16,7 @@ int _printf(const char *format, ...)
 		{"c", c_printf}, {"s", s_printf}, {"%", m_printf},
 		{"i", i_printf}, {"d", i_printf}, {"b", b_printf},
 		{"u", u_printf}, {"o", o_printf}, {"x", x_printf},
-		{"X", X_printf}
+		{"X", X_printf}, {"R", rot_printf}
 	};
 
 	if (!format || (*format == '%' && *(format + 1) == '\0'))
