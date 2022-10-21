@@ -9,10 +9,11 @@
 
 int x_printf(va_list *args)
 {
-    _ui rem, quo, src, len = 0, idx = 0;
+    unsigned int rem, quo, src;
+	int len = 0, idx = 0;
     char *buf, i;
 
-	src = va_arg(*args, _ui);
+	src = va_arg(*args, unsigned int);
     if (src < 0)
 	{
         src *= -1;

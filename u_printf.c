@@ -9,11 +9,11 @@
 
 int u_printf(va_list *args)
 {
-	_ui quo, rem, src;
+	unsigned int quo, rem, src;
 	int idx = 0, len = 0;
 	char *buf;
 
-	src = va_arg(*args, _ui);
+	src = va_arg(*args, unsigned int);
 
 	for (quo = src; quo > 0; quo /= 10)
 		len++;

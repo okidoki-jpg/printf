@@ -6,7 +6,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-typedef unsigned int _ui;
+
+/**
+ * struct type_convert - pointer to data type intepreter
+ * @type: specifier to evaluate.
+ * @f: pointer to specifier intepreter
+ */
+
 typedef struct type_convert
 {
 	char *type;
@@ -26,6 +32,6 @@ int u_printf(va_list *args);
 int o_printf(va_list *args);
 int x_printf(va_list *args);
 int X_printf(va_list *args);
-/*int rot_printf(va_list *args);
-*/
+int rot_printf(va_list *args);
+
 #endif /* _main_h_ */
