@@ -32,6 +32,7 @@ int u_printf(va_list *args);
 int o_printf(va_list *args);
 int x_printf(va_list *args);
 int X_printf(va_list *args);
+int r_printf(va_list *args);
 int rot_printf(va_list *args);
 
 #endif /* _main_h_ */

@@ -4,8 +4,7 @@
 
 int main(void)
 {
-    /*char *str = "Anny";
-    char *str = "Let's try to printf a simple sentence.";*/
+    char *str = "Let's try to printf a simple sentence.";
 	unsigned int ui;
 	int len;
     int len2;
@@ -32,7 +31,8 @@ int main(void)
     printf("Unsigned octal:[%o]\n", ui);
 	_printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
     printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
-    /*_printf("Rot13: %R\n", str);*/
+    _printf("Str Rev: %r\n", str);
+    _printf("Rot13: %R\n", str);
 	_printf("%b\n", 98);
     return (0);
 }
